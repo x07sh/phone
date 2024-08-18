@@ -1,2 +1,2 @@
 [console_scripts]
-phoneTUIapp = phoneTUIapp.MyTUI:main
+phoneTUI = phoneTUIapp.phoneTUI:main

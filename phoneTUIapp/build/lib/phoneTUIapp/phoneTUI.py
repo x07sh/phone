@@ -102,6 +102,9 @@ class MainForm(npyscreen.Form):
         self.display_box.values = formatted_sms.splitlines() 
         self.display_box.display()
 
-if __name__ == "__main__":
+def main():
     myTUI = MyTUI()
     myTUI.run()
+
+if __name__ == "__main__":
+    main()

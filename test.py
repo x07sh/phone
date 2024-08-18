@@ -58,10 +58,26 @@ class MyTUI(npyscreen.NPSAppManaged):
 
 class MainForm(npyscreen.Form):
     def create(self):
+
+        def set_up_handlers(self):
+            super().set_up_handlers()
+            self.add_handlers({
+                "^M": self.h_select  # Bind Enter to the selection handler
+            })
+
+        def h_select(self, _input):
+            # Simulate selecting "OK" after the user's choice
+            self.actionHighlighted(self.values[self.value[0]], self.value[0])
+            self.parent.editing = False
+        
         self.menu = self.add(npyscreen.SelectOne, 
                              values = ["Phone Calls", "SMS", "Exit"], 
                              max_height=4, 
                              scroll_exit=True)
+
+        self.menu.add_handlers({
+            "^M": self.afterEditing  # ^M represents the Enter key
+        })
 
         self.display_box = self.add(npyscreen.MultiLineAction, 
                                     max_height=-3,  # Fill remaining space
